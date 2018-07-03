@@ -26,12 +26,16 @@ module.exports = {
             use: [
                 {
                     loader: "style-loader"
-                }, {
+                }, 
+                {
                     loader: "css-loader",
                     options: {
                       modules: true, // enable css modules
                       localIdentName: '[name]__[local]--[hash:base64:5]' // css class names
                   }
+                },
+                {
+                    loader: "postcss-loader"
                 }
             ]
           }
