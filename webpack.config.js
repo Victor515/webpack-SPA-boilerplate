@@ -1,8 +1,11 @@
+const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
 module.exports = {
     devtool: 'eval-source-map',
     entry:  __dirname + "/app/main.js",// the entry point
     output: {
-      path: __dirname + "/public", // the path to store bundled file
+      path: __dirname + "/dist", // the path to store bundled file
       filename: "bundle.js" // the name of bundled files
     },
 
@@ -40,5 +43,12 @@ module.exports = {
             ]
           }
       ]
-    }
+    },
+
+    plugins: [
+        new webpack.BannerPlugin('Created by Victor Ouyang'),
+        new HtmlWebpackPlugin({
+            template: __dirname + "/app/index.html"
+        })
+    ]
   }
