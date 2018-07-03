@@ -1,13 +1,14 @@
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const CleanWebpackPlugin = require("clean-webpack-plugin"); // help clean the dist folder before building
 
 module.exports = {
     devtool: 'null',
     entry:  __dirname + "/app/main.js",// the entry point
     output: {
       path: __dirname + "/dist", // the path to store bundled file
-      filename: "bundle.js" // the name of bundled files
+      filename: "bundle-[hash].js" // the name of bundled files
     },
     optimization: {
         minimize: true
@@ -60,6 +61,11 @@ module.exports = {
             // both options are optional
             filename: "[name].css",
             chunkFilename: "[id].css"
-          })
+        }),
+        new CleanWebpackPlugin('dist/*.*', {
+            root: __dirname,
+            verbose: true,
+            dry: false
+        })
     ]
   }
