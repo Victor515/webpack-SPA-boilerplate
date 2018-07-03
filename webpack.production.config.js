@@ -1,12 +1,16 @@
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
-    devtool: 'eval-source-map',
+    devtool: 'null',
     entry:  __dirname + "/app/main.js",// the entry point
     output: {
-      path: __dirname + "/public", // the path to store bundled file
+      path: __dirname + "/dist", // the path to store bundled file
       filename: "bundle.js" // the name of bundled files
+    },
+    optimization: {
+        minimize: true
     },
 
     devServer:{
@@ -28,7 +32,7 @@ module.exports = {
             test: /\.css$/,
             use: [
                 {
-                    loader: "style-loader"
+                    loader: MiniCssExtractPlugin.loader
                 }, 
                 {
                     loader: "css-loader",
@@ -49,6 +53,13 @@ module.exports = {
         new webpack.BannerPlugin('Created by Victor Ouyang'),
         new HtmlWebpackPlugin({
             template: __dirname + "/app/index.html"
-        })
+        }),
+        new webpack.optimize.OccurrenceOrderPlugin(),
+        new MiniCssExtractPlugin({
+            // Options similar to the same options in webpackOptions.output
+            // both options are optional
+            filename: "[name].css",
+            chunkFilename: "[id].css"
+          })
     ]
   }
