@@ -23,10 +23,10 @@
     "webpack-dev-server": "^3.1.4"
   },
   "scripts": {
-    "start": "webpack",
+    "start": "npm run build",
     "test": "echo \"Error: no test specified\" && exit 1",
     "server": "webpack-dev-server --open",
-    "build": "NODE_ENV=production webpack --config ./webpack.production.config.js --progress"
+    "build": "webpack --env.NODE_ENV=production --config ./webpack.production.config.js --progress"
   },
   "keywords": [
     "webpack"
