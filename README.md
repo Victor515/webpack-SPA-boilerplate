@@ -33,11 +33,13 @@ Note: `npm start` will run the web-dev-server for local development. `npm run bu
 ### plugins:
   1. BannerPlugin(built-in plugin): `new webpack.BannerPlugin('Created by Victor Ouyang')`
   2. HtmlWebpackPlugin: webpack will inject bundled js and css into the template you provide
-  3. MiniCssExtractPlugin(only in webpack.production.config.js): Seperate CSS files from JS, in place `style-loader`  
+  3. MiniCssExtractPlugin: Seperate CSS files from JS, in place `style-loader`
+  Note: This can be used to minimize CSS in production mode, see [documentation](https://webpack.js.org/plugins/mini-css-extract-plugin/#minimizing-for-production)
   4. CleanWebpackPlugin: Clean `./dist` folder every time before building
 
 ### others:
   1. source maps: use `eval-source-map`. This should only be used in local development.
+  Edit: Now I add source-map to production mode as well.
   2. webpack-dev-server: By default the project is running at http://localhost:8080
   3. Add a hash value to output file name, useful for cache:  
   ```
@@ -46,4 +48,5 @@ Note: `npm start` will run the web-dev-server for local development. `npm run bu
       filename: "[name].bundle-[hash].js" // the name of bundled files
   },
   ```
+  4. Specify `NODE_ENV` in production mode to help some libraries to optimize
   
