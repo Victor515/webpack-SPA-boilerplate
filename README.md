@@ -19,10 +19,6 @@ Thanks for [Val-Zhang's repository](https://github.com/Val-Zhang/blogs/tree/mast
 Note: `npm start` will build the project in production environment. `npm run server` will start the web-dev-server for local 
 development.
 
-* source maps: use `eval-source-map`. This should only be used in local development.
-
-* webpack-dev-server: By default the project is running at http://localhost:8080
-
 * Loaders:  
   1. babel-loader(config in .babelrc), with babel-core + babel-env-preset(for ES6) + babel-preset-react(for React JSX)
   2. css-loader + style-loader  
@@ -37,5 +33,18 @@ development.
 
 * plugins:
   1. BannerPlugin(built-in plugin): `new webpack.BannerPlugin('Created by Victor Ouyang')`
-  2. HtmlWebpackPlugin
-  3. 
+  2. HtmlWebpackPlugin: webpack will inject bundled js and css into the template you provide
+  3. MiniCssExtractPlugin(only in webpack.production.config.js): Seperate CSS files from JS, in place `style-loader`  
+  4. CleanWebpackPlugin(only in webpack.production.config.js): Clean `./dist` folder every time before building
+
+* others:
+  1. source maps: use `eval-source-map`. This should only be used in local development.
+  2. webpack-dev-server: By default the project is running at http://localhost:8080
+  3. Add a hash value to output file name, useful for cache(only in webpack.production.config.js):  
+  ```
+  output: {
+      path: __dirname + "/dist", // the path to store bundled file
+      filename: "bundle-[hash].js" // the name of bundled files
+  },
+  ```
+  
