@@ -7,27 +7,5 @@ module.exports = merge(common, {
     devServer:{
       contentBase: "./public",
       historyApiFallback: true
-    },
-    module: {
-        rules: [
-            {
-              test: /\.css$/,
-              use: [
-                  {
-                      loader: "style-loader"
-                  }, 
-                  {
-                      loader: "css-loader",
-                      // options: {
-                      //   modules: true, // enable css modules
-                      //   localIdentName: '[name]__[local]--[hash:base64:5]' // css class names
-                      // }
-                  },
-                  {
-                      loader: "postcss-loader"
-                  }
-              ]
-            }
-        ]
-      }
+    }
 })
