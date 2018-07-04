@@ -8,7 +8,7 @@ module.exports = {
     }, // the entry point  
     output: {
       path: __dirname + "/dist", // the path to store bundled file
-      filename: "[name].bundle.js" // the name of bundled files
+      filename: "[name].bundle-[hash].js" // the name of bundled files
     },
     module: {
       rules: [
