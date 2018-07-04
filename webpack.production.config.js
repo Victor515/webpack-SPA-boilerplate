@@ -37,10 +37,10 @@ module.exports = {
                 }, 
                 {
                     loader: "css-loader",
-                    options: {
-                      modules: true, // enable css modules
-                      localIdentName: '[name]__[local]--[hash:base64:5]' // css class names
-                  }
+                    // options: {
+                    //   modules: true, // enable css modules
+                    //   localIdentName: '[name]__[local]--[hash:base64:5]' // css class names
+                    // }
                 },
                 {
                     loader: "postcss-loader"
@@ -55,8 +55,7 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: __dirname + "/app/index.html"
         }),
-        new webpack.optimize.OccurrenceOrderPlugin(),
-        new MiniCssExtractPlugin({
+        new w({
             // Options similar to the same options in webpackOptions.output
             // both options are optional
             filename: "[name].css",
